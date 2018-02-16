@@ -1,1 +1,0 @@
-# SmartH-BIM
