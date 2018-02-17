@@ -62243,7 +62243,7 @@ function() {
         i = Glodon.Bimface.UI.Control.ControlEvent,
         n = new Glodon.Bimface.UI.Button.ButtonConfig;
       n.id = "Home",
-      n.title = "主视图",
+      n.title = "MainToolbar",
       n.className = "bf-button gld-bf-home";
       var o = new Glodon.Bimface.UI.Button.Button(n);
       return o.addEventListener(i.Click, function() {
@@ -62302,7 +62302,7 @@ function() {
         return void console.log("The API is not supported on this viewer.");
       var a = new Glodon.Bimface.UI.Button.ButtonConfig;
       a.id = "RectangleSelect",
-      a.title = "框选放大",
+      a.title = "RectangleSelect",
       a.className = "bf-button gld-bf-zoomrect";
       var s = new Glodon.Bimface.UI.Button.ToggleButton(a),
         l = function() {
@@ -62338,7 +62338,7 @@ function() {
         t.addEventListener(e.ComponentsSelectionChanged, i),
         o;
       var n = new Glodon.Bimface.UI.Panel.PanelConfig;
-      n.title = "属性",
+      n.title = "Property",
       n.css = {
         right: "10px",
         top: "10px",
@@ -62370,7 +62370,7 @@ function() {
         return void console.log("The API is not supported on this viewer.");
       var o = new Glodon.Bimface.UI.Button.ButtonConfig;
       o.id = "Property",
-      o.title = "属性",
+      o.title = "Property",
       o.className = "bf-button gld-bf-properties";
       var r,
         a = new Glodon.Bimface.UI.Button.ToggleButton(o);
@@ -62396,7 +62396,7 @@ function() {
         return void console.log("The API is not supported on this viewer.");
       var a = new Glodon.Bimface.UI.Button.ButtonConfig;
       a.id = "Measure",
-      a.title = "测量",
+      a.title = "Measure",
       a.className = "bf-button gld-bf-measure";
       var s,
         l,
@@ -62404,15 +62404,15 @@ function() {
         h = function() {
           var t = e.create("div", "bf-panel bf-measure-panel"),
             i = e.create("span", "bf-measure-text");
-          i.innerText = "请选择测量起点";
+          i.innerText = "Select startPoint";
           var n = e.create("span", "bf-close bf-measure-close");
           n.addEventListener("click", function() {
             c.setCheckedState(!1)
           });
           var o = e.create("button", "bf-measure-reset");
-          return o.innerText = "重置",
+          return o.innerText = "Measure-reset",
           o.addEventListener("click", function() {
-            i.innerHTML = "请选择测量起点",
+            i.innerHTML = "Select startPoint",
             l.reset()
           }),
           t.appendChild(i),
@@ -62510,7 +62510,7 @@ function() {
         return void console.log("The API is not supported on this viewer.");
       var r = new Glodon.Bimface.UI.Button.ButtonConfig;
       r.id = "Section",
-      r.title = "剖切",
+      r.title = "Section",
       r.className = "bf-button gld-bf-sectionbox";
       var a,
         s = new Glodon.Bimface.UI.Button.ToggleButton(r);
@@ -62611,7 +62611,7 @@ function() {
         return t.show(),
         t;
       var i = new Glodon.Bimface.UI.Panel.PanelConfig;
-      i.title = "基本信息",
+      i.title = "Information",
       i.css = {
         left: "50%",
         top: "50%",
@@ -62637,7 +62637,7 @@ function() {
         return void console.log("The API is not supported on this viewer.");
       var o = new Glodon.Bimface.UI.Button.ButtonConfig;
       o.id = "Information",
-      o.title = "基本信息",
+      o.title = "Information",
       o.className = "bf-button gld-bf-information";
       var r,
         a = new Glodon.Bimface.UI.Button.ToggleButton(o);
@@ -62659,7 +62659,7 @@ function() {
       var e = (Glodon.Bimface.Viewer.Viewer3D, Glodon.Bimface.UI.Control.ControlEvent),
         i = new Glodon.Bimface.UI.Button.ButtonConfig;
       i.id = "FullScreen",
-      i.title = "全屏",
+      i.title = "FullScreen",
       i.className = "bf-button gld-bf-maximize";
       var n = new Glodon.Bimface.UI.Button.ChangeButton(i);
       return n.addEventListener(e.Click, function() {
@@ -62670,9 +62670,9 @@ function() {
         var t = n.getTitle();
         n.toggleClassName("gld-bf-maximize"),
         n.toggleClassName("gld-bf-minimize"),
-        "取消全屏" == t
-          ? n.setTitle("全屏")
-          : n.setTitle("取消全屏")
+        "cancelFullScreen" == t
+          ? n.setTitle("FullScreen")
+          : n.setTitle("Cancel FullScreen")
       }),
       n
     };
@@ -62752,7 +62752,7 @@ function() {
         return t.show(),
         t;
       var r = new Glodon.Bimface.UI.Panel.PanelConfig;
-      return r.title = "构件树",
+      return r.title = "ModelTree",
       r.css = {
         left: "10px",
         top: "10px",
@@ -62768,7 +62768,7 @@ function() {
           a.selection = !0;
           var s = new Glodon.Bimface.UI.Tree.TreeNode(a);
           s.element.setAttribute("data-filter", "root"),
-          s.setData("all", "全部分类"),
+          s.setData("all", "All"),
           s.expand();
           var l = new Glodon.Bimface.UI.Tree.Tree(s);
           if ("singleModel" == r)
@@ -62812,7 +62812,7 @@ function() {
       var n = (Glodon.Bimface.Viewer.Viewer3D, Glodon.Bimface.UI.Control.ControlEvent),
         o = new Glodon.Bimface.UI.Button.ButtonConfig;
       o.id = "ModelTree",
-      o.title = "构件树",
+      o.title = "ModelTree",
       o.className = "bf-button gld-bf-tree";
       var r = new Glodon.Bimface.UI.Button.Button(o);
       return r.addEventListener(n.Click, function() {
@@ -62839,7 +62839,7 @@ function() {
       var n = new Glodon.Bimface.UI.Panel.PanelConfig,
         o = this;
       this.viewer = t,
-      n.title = "设置",
+      n.title = "Config",
       n.css = {
         left: "50%",
         top: "50%",
@@ -62891,7 +62891,7 @@ function() {
         2 == i.color && 'checked="checked"') + ' />\n        <span class="bf-radio" style="background:#5c5c5c;"></span>\n        </label>\n        <label class="bf-color-item">\n        <input type="radio" name="color" class="bf-color-input" value="4"  ' + (
         3 == i.color && 'checked="checked"') + '/>\n        <span class="bf-radio" style="background:#000000;"></span>\n        </label>\n        <label class="bf-color-item">\n        <input type="radio" name="color" class="bf-color-input" value="5"  ' + (
         4 == i.color && 'checked="checked"') + '/>\n        <span class="bf-radio" style="background:#869db4;"></span>\n        </label>\n        <label class="bf-color-item">\n        <input type="radio" name="color" class="bf-color-input" value="6" ' + (
-        5 == i.color && 'checked="checked"') + ' />\n        <span class="bf-radio" style="background:#32475b;"></span>\n        </label>\n        </div>\n        </li>\n        </ul>\n        <div class="bf-reset">\n        <span class="reset">恢复默认设置</span>\n        </div>';
+        5 == i.color && 'checked="checked"') + ' />\n        <span class="bf-radio" style="background:#32475b;"></span>\n        </label>\n        </div>\n        </li>\n        </ul>\n        <div class="bf-reset">\n        <span class="reset">Restore Default</span>\n        </div>';
       l.innerHTML = c,
       s.innerHTML = '\n      <span data-tab="tab1" class="tab-left selected">交互设置</span><span data-tab="tab2" class="tab-right">效果设置</span>\n    ',
       s.onclick = function(t) {
@@ -62980,7 +62980,7 @@ function() {
         return void console.log("The API is not supported on this viewer.");
       var o = new Glodon.Bimface.UI.Button.ButtonConfig;
       o.id = "Setting",
-      o.title = "设置",
+      o.title = "Setting",
       o.className = "bf-button gld-bf-settings";
       var r,
         a = new Glodon.Bimface.UI.Button.ToggleButton(o);
@@ -63033,7 +63033,7 @@ function() {
           },
           WalkSetting: {
             element: n,
-            title: "漫游设置",
+            title: "Walk",
             className: "bf-panel bf-walksetting-panel",
             css: {
               left: "50%",
@@ -63066,7 +63066,7 @@ function() {
           },
           u = new Glodon.Bimface.Application.Panel(r.WalkMenu),
           d = e.create("div", "bf-person"),
-          p = '<span class="person-text">请使用<em class="orange">WSAD</em>和<em class="orange">QE</em>移动</span>\n                  <div class="person-btns"><span class=" gld-bf-minus  speedBtn"></span><span class="speedNum">' + a[r.WalkMenu.speedIndex] + 'X</span><span class=" gld-bf-add speedBtn"></span><span class="setting">设置</span></div>';
+          p = '<span class="person-text">请使用<em class="orange">WSAD</em>和<em class="orange">QE</em>移动</span>\n                  <div class="person-btns"><span class=" gld-bf-minus  speedBtn"></span><span class="speedNum">' + a[r.WalkMenu.speedIndex] + 'X</span><span class=" gld-bf-add speedBtn"></span><span class="setting">Setting</span></div>';
         d.innerHTML = p,
         d.querySelector(".gld-bf-add").addEventListener("click", c),
         d.querySelector(".gld-bf-minus").addEventListener("click", h);
@@ -63091,7 +63091,7 @@ function() {
                 : "icon-checked") + '></span>\n                      <input type="radio" class="bf-orbit" name="orbit" value="Right"' + (
                 i.click
                 ? ""
-                : 'checked="true"') + '>\n                          <span class="bf-radio">鼠标滑动</span>\n                          </label>\n\n\n                          </div>\n                          </li>\n\n                          </ul>\n                          <div class="bf-reset-wrap">\n                          <span class="person-reset ">恢复默认设置</span>\n                          </div>';
+                : 'checked="true"') + '>\n                          <span class="bf-radio">鼠标滑动</span>\n                          </label>\n\n\n                          </div>\n                          </li>\n\n                          </ul>\n                          <div class="bf-reset-wrap">\n                          <span class="person-reset ">Restore Default</span>\n                          </div>';
             n.innerHTML = d;
             for (var p = n.querySelectorAll(".viewpoint input"), f = 0, m = p.length; f < m; f++)
               p[f].addEventListener("change", function() {
@@ -63152,7 +63152,7 @@ function() {
         return void console.log("The API is not supported on this viewer.");
       var r = new Glodon.Bimface.UI.Button.ButtonConfig;
       r.id = "Walk",
-      r.title = "漫游模式",
+      r.title = "Walk",
       r.className = "bf-button gld-bf-firstperson";
       var a,
         s,
@@ -63190,7 +63190,7 @@ function() {
     e = function() {
       var t = {
           id: "MainToolbar",
-          title: "主菜单",
+          title: "MainToolbar",
           className: "bf-toolbar bf-toolbar-bottom",
           buttons: [
             "Home",
@@ -63216,7 +63216,7 @@ function() {
     e = function() {
       var t = {
           id: "SectionToolbar",
-          title: "剖切",
+          title: "SectionToolbar",
           buttons: ["SectionVisiable", "SectionRotate", "SectionReset"]
         },
         e = new Glodon.Bimface.UI.Toolbar.ToolbarConfig;
@@ -63751,7 +63751,7 @@ function() {
           },
           FullScreen: {
             id: "FullScreen",
-            title: "全屏",
+            title: "FullScreen",
             className: "bf-button gld-bf-maximize",
             handles: {
               Click: function() {
@@ -63763,8 +63763,8 @@ function() {
                   e.toggleClassName("gld-bf-maximize"),
                   e.toggleClassName("gld-bf-minimize"),
                   t
-                    ? e.setTitle("全屏")
-                    : e.setTitle("取消全屏")
+                    ? e.setTitle("FullScreen")
+                    : e.setTitle("Exit FullScreen")
                 })
               }
             }
