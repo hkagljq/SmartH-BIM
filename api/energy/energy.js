@@ -314,27 +314,27 @@
         /**
           `Promise.resolve` returns a promise that will become resolved with the
           passed `value`. It is shorthand for the following:
-	
+
           ```javascript
           let promise = new Promise(function(resolve, reject){
             resolve(1);
           });
-	
+
           promise.then(function(value){
             // value === 1
           });
           ```
-	
+
           Instead of writing the above, your code now simply becomes the following:
-	
+
           ```javascript
           let promise = Promise.resolve(1);
-	
+
           promise.then(function(value){
             // value === 1
           });
           ```
-	
+
           @method resolve
           @static
           @param {Any} value value that the returned promise will be resolved with
@@ -713,39 +713,39 @@
           is fulfilled with an array of fulfillment values for the passed promises, or
           rejected with the reason of the first passed promise to be rejected. It casts all
           elements of the passed iterable to promises as it runs this algorithm.
-	
+
           Example:
-	
+
           ```javascript
           let promise1 = resolve(1);
           let promise2 = resolve(2);
           let promise3 = resolve(3);
           let promises = [ promise1, promise2, promise3 ];
-	
+
           Promise.all(promises).then(function(array){
             // The array here would be [ 1, 2, 3 ];
           });
           ```
-	
+
           If any of the `promises` given to `all` are rejected, the first promise
           that is rejected will be given as an argument to the returned promises's
           rejection handler. For example:
-	
+
           Example:
-	
+
           ```javascript
           let promise1 = resolve(1);
           let promise2 = reject(new Error("2"));
           let promise3 = reject(new Error("3"));
           let promises = [ promise1, promise2, promise3 ];
-	
+
           Promise.all(promises).then(function(array){
             // Code here never runs because there are rejected promises!
           }, function(error) {
             // error.message === "2"
           });
           ```
-	
+
           @method all
           @static
           @param {Array} entries array of promises
@@ -762,47 +762,47 @@
         /**
           `Promise.race` returns a new promise which is settled in the same way as the
           first passed promise to settle.
-	
+
           Example:
-	
+
           ```javascript
           let promise1 = new Promise(function(resolve, reject){
             setTimeout(function(){
               resolve('promise 1');
             }, 200);
           });
-	
+
           let promise2 = new Promise(function(resolve, reject){
             setTimeout(function(){
               resolve('promise 2');
             }, 100);
           });
-	
+
           Promise.race([promise1, promise2]).then(function(result){
             // result === 'promise 2' because it was resolved before promise1
             // was resolved.
           });
           ```
-	
+
           `Promise.race` is deterministic in that only the state of the first
           settled promise matters. For example, even if other promises given to the
           `promises` array argument are resolved, but the first settled promise has
           become rejected before the other promises became fulfilled, the returned
           promise will become rejected:
-	
+
           ```javascript
           let promise1 = new Promise(function(resolve, reject){
             setTimeout(function(){
               resolve('promise 1');
             }, 200);
           });
-	
+
           let promise2 = new Promise(function(resolve, reject){
             setTimeout(function(){
               reject(new Error('promise 2'));
             }, 100);
           });
-	
+
           Promise.race([promise1, promise2]).then(function(result){
             // Code here never runs
           }, function(reason){
@@ -810,13 +810,13 @@
             // promise 1 became fulfilled
           });
           ```
-	
+
           An example real-world use case is implementing timeouts:
-	
+
           ```javascript
           Promise.race([ajax('foo.json'), timeout(5000)])
           ```
-	
+
           @method race
           @static
           @param {Array} promises array of promises to observe
@@ -845,31 +845,31 @@
         /**
           `Promise.reject` returns a promise rejected with the passed `reason`.
           It is shorthand for the following:
-	
+
           ```javascript
           let promise = new Promise(function(resolve, reject){
             reject(new Error('WHOOPS'));
           });
-	
+
           promise.then(function(value){
             // Code here doesn't run because the promise is rejected!
           }, function(reason){
             // reason.message === 'WHOOPS'
           });
           ```
-	
+
           Instead of writing the above, your code now simply becomes the following:
-	
+
           ```javascript
           let promise = Promise.reject(new Error('WHOOPS'));
-	
+
           promise.then(function(value){
             // Code here doesn't run because the promise is rejected!
           }, function(reason){
             // reason.message === 'WHOOPS'
           });
           ```
-	
+
           @method reject
           @static
           @param {Any} reason value that the returned promise will be rejected with.
@@ -897,66 +897,66 @@
           primary way of interacting with a promise is through its `then` method, which
           registers callbacks to receive either a promise's eventual value or the reason
           why the promise cannot be fulfilled.
-	
+
           Terminology
           -----------
-	
+
           - `promise` is an object or function with a `then` method whose behavior conforms to this specification.
           - `thenable` is an object or function that defines a `then` method.
           - `value` is any legal JavaScript value (including undefined, a thenable, or a promise).
           - `exception` is a value that is thrown using the throw statement.
           - `reason` is a value that indicates why a promise was rejected.
           - `settled` the final resting state of a promise, fulfilled or rejected.
-	
+
           A promise can be in one of three states: pending, fulfilled, or rejected.
-	
+
           Promises that are fulfilled have a fulfillment value and are in the fulfilled
           state.  Promises that are rejected have a rejection reason and are in the
           rejected state.  A fulfillment value is never a thenable.
-	
+
           Promises can also be said to *resolve* a value.  If this value is also a
           promise, then the original promise's settled state will match the value's
           settled state.  So a promise that *resolves* a promise that rejects will
           itself reject, and a promise that *resolves* a promise that fulfills will
           itself fulfill.
-	
-	
+
+
           Basic Usage:
           ------------
-	
+
           ```js
           let promise = new Promise(function(resolve, reject) {
             // on success
             resolve(value);
-	
+
             // on failure
             reject(reason);
           });
-	
+
           promise.then(function(value) {
             // on fulfillment
           }, function(reason) {
             // on rejection
           });
           ```
-	
+
           Advanced Usage:
           ---------------
-	
+
           Promises shine when abstracting away asynchronous interactions such as
           `XMLHttpRequest`s.
-	
+
           ```js
           function getJSON(url) {
             return new Promise(function(resolve, reject){
               let xhr = new XMLHttpRequest();
-	
+
               xhr.open('GET', url);
               xhr.onreadystatechange = handler;
               xhr.responseType = 'json';
               xhr.setRequestHeader('Accept', 'application/json');
               xhr.send();
-	
+
               function handler() {
                 if (this.readyState === this.DONE) {
                   if (this.status === 200) {
@@ -968,16 +968,16 @@
               };
             });
           }
-	
+
           getJSON('/posts.json').then(function(json) {
             // on fulfillment
           }, function(reason) {
             // on rejection
           });
           ```
-	
+
           Unlike callbacks, promises are great composable primitives.
-	
+
           ```js
           Promise.all([
             getJSON('/posts'),
@@ -985,11 +985,11 @@
           ]).then(function(values){
             values[0] // => postsJSON
             values[1] // => commentsJSON
-	
+
             return values;
           });
           ```
-	
+
           @class Promise
           @param {function} resolver
           Useful for tooling.
@@ -1021,7 +1021,7 @@
             The primary way of interacting with a promise is through its `then` method,
             which registers callbacks to receive either a promise's eventual value or the
             reason why the promise cannot be fulfilled.
-	  
+
             ```js
             findUser().then(function(user){
               // user is available
@@ -1029,14 +1029,14 @@
               // user is unavailable, and you are given the reason why
             });
             ```
-	  
+
             Chaining
             --------
-	  
+
             The return value of `then` is itself a promise.  This second, 'downstream'
             promise is resolved with the return value of the first promise's fulfillment
             or rejection handler, or rejected if the handler throws an exception.
-	  
+
             ```js
             findUser().then(function (user) {
               return user.name;
@@ -1046,7 +1046,7 @@
               // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
               // will be `'default name'`
             });
-	  
+
             findUser().then(function (user) {
               throw new Error('Found user, but still unhappy');
             }, function (reason) {
@@ -1059,7 +1059,7 @@
             });
             ```
             If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
-	  
+
             ```js
             findUser().then(function (user) {
               throw new PedagogicalException('Upstream error');
@@ -1071,15 +1071,15 @@
               // The `PedgagocialException` is propagated all the way down to here
             });
             ```
-	  
+
             Assimilation
             ------------
-	  
+
             Sometimes the value you want to propagate to a downstream promise can only be
             retrieved asynchronously. This can be achieved by returning a promise in the
             fulfillment or rejection handler. The downstream promise will then be pending
             until the returned promise is settled. This is called *assimilation*.
-	  
+
             ```js
             findUser().then(function (user) {
               return findCommentsByAuthor(user);
@@ -1087,9 +1087,9 @@
               // The user's comments are now available
             });
             ```
-	  
+
             If the assimliated promise rejects, then the downstream promise will also reject.
-	  
+
             ```js
             findUser().then(function (user) {
               return findCommentsByAuthor(user);
@@ -1099,15 +1099,15 @@
               // If `findCommentsByAuthor` rejects, we'll have the reason here
             });
             ```
-	  
+
             Simple Example
             --------------
-	  
+
             Synchronous Example
-	  
+
             ```javascript
             let result;
-	  
+
             try {
               result = findResult();
               // success
@@ -1115,9 +1115,9 @@
               // failure
             }
             ```
-	  
+
             Errback Example
-	  
+
             ```js
             findResult(function(result, err){
               if (err) {
@@ -1127,9 +1127,9 @@
               }
             });
             ```
-	  
+
             Promise Example;
-	  
+
             ```javascript
             findResult().then(function(result){
               // success
@@ -1137,15 +1137,15 @@
               // failure
             });
             ```
-	  
+
             Advanced Example
             --------------
-	  
+
             Synchronous Example
-	  
+
             ```javascript
             let author, books;
-	  
+
             try {
               author = findAuthor();
               books  = findBooksByAuthor(author);
@@ -1154,19 +1154,19 @@
               // failure
             }
             ```
-	  
+
             Errback Example
-	  
+
             ```js
-	  
+
             function foundBooks(books) {
-	  
+
             }
-	  
+
             function failure(reason) {
-	  
+
             }
-	  
+
             findAuthor(function(author, err){
               if (err) {
                 failure(err);
@@ -1191,9 +1191,9 @@
               }
             });
             ```
-	  
+
             Promise Example;
-	  
+
             ```javascript
             findAuthor().
               then(findBooksByAuthor).
@@ -1203,7 +1203,7 @@
               // something went wrong
             });
             ```
-	  
+
             @method then
             @param {Function} onFulfilled
             @param {Function} onRejected
@@ -1215,25 +1215,25 @@
           /**
             `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
             as the catch block of a try/catch statement.
-	  
+
             ```js
             function findAuthor(){
               throw new Error('couldn't find that author');
             }
-	  
+
             // synchronous
             try {
               findAuthor();
             } catch(reason) {
               // something went wrong
             }
-	  
+
             // async with promises
             findAuthor().catch(function(reason){
               // something went wrong
             });
             ```
-	  
+
             @method catch
             @param {Function} onRejection
             Useful for tooling.
@@ -5551,7 +5551,7 @@
          *
          * modified by Evan You (@yyx990803)
          *
-	
+
         /*
          * Not type-checking this because this file is perf-critical and the cost
          * of making flow understand it is not worth it.
@@ -10626,7 +10626,7 @@
        *
        *   - IE10 has a broken `TypedArray.prototype.subarray` function which returns arrays of
        *     incorrect length in some situations.
-	
+
        * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
        * get the Object implementation, which is slower but behaves correctly.
        */
@@ -14194,6 +14194,17 @@
 
                 me.updateTag();
               });
+
+              // Test get id
+                app.addEventListener(Glodon.Bimface.Viewer.Viewer3DEvent.ComponentsSelectionChanged,function(componentData){
+                if(componentData && componentData.objectId){
+                  var vida = componentData.objectId;
+                  window.alert(vida);
+                  window.alert("vida");
+                        }
+                });
+
+              //origin
             };
 
             var failureCallback = function failureCallback(error) {
@@ -14202,7 +14213,7 @@
 
 			//var viewToken = "e563f4b54bd94a2b9ddaf1d6e33d172a"
 
-			
+
             //var viewToken = res.data.data;
 
             var options = new BimfaceSDKLoaderConfig();
