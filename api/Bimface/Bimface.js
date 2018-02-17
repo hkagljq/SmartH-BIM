@@ -59583,7 +59583,7 @@ function() {
             : (h && (e.domElement.removeChild(u), h = !1), o.fireEvent(r.RectSelection, t))
         };
       l.innerText = "0%",
-      c.innerText = "正在加载，请稍候...",
+      c.innerText = "Loading，Please Wait...",
       a.appendChild(s),
       a.appendChild(l),
       a.appendChild(c),
