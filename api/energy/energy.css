@@ -174,7 +174,7 @@ body.login{
     width:218px;
     height:138px;
     border:1px solid #ccc;
-    background:url(/api/energy/energy.png) no-repeat;
+    background:url(energy.png) no-repeat;
     margin:10px 0 10px 9px
 }
 .container .side .info.off li{
@@ -217,17 +217,17 @@ body.login{
     background-color:#e7e7e7
 }
 .container .side .btn-box span.switch{
-    background-image:url(/api/energy/icon_play.png);
+    background-image:url(icon_play.png);
     background-repeat:no-repeat;
     background-position:50%
 }
 .container .side .btn-box span.down{
-    background-image:url(/api/energy/icon_down.png);
+    background-image:url(icon_down.png);
 	background-repeat:no-repeat;
     background-position:50%
 }
 .container .side .btn-box span.up{
-    background-image:url(/api/energy/icon_up.png);
+    background-image:url(icon_up.png);
 	background-repeat:no-repeat;
     background-position:50%
 }
