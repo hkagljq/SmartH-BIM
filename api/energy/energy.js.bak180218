@@ -13934,30 +13934,30 @@
           tagArray: [{
             isCheck: false,
             isOn: true,
-            name: '总经理办公室',
-            id: 1639053,
+            name: 'GM Office',
+            id: 174,
             boundingBox: {
               max: {
-                x: -53101.81,
-                y: 2721.257,
-                z: 1352.483
+                x: -43009.81,
+                y: -11816.257,
+                z: 3150
               },
               min: {
-                x: -53123.81,
-                y: 2527.628,
-                z: 1220.26
+                x: -43031.81,
+                y: -11999.628,
+                z: 2350
               }
             },
             cameraStatus: {
               position: {
-                x: -2287.149370952311,
-                y: 110.52557569686243,
-                z: -192.1875071537883
+                x: -43009.81,
+                y: -11816.257,
+                z: 5132.483
               },
               target: {
-                x: -2269.582016914656,
-                y: 101.27441349800284,
-                z: -179.21726068967553
+                x: -43059.81,
+                y: -11721.257,
+                z: 424.1632
               },
               up: {
                 x: 0,
@@ -13977,7 +13977,7 @@
           }, {
             isCheck: false,
             isOn: true,
-            name: '财务部',
+            name: 'Finance Dept.',
             id: 1630239,
             boundingBox: {
               max: {
@@ -13993,14 +13993,14 @@
             },
             cameraStatus: {
               position: {
-                x: -2121.1852885149365,
-                y: 64.23217351460244,
-                z: -129.7344066005589
+                x: -52981.81,
+                y: 3003.376,
+                z: 1493.396
               },
               target: {
-                x: -2139.176163459029,
-                y: 57.32617924509378,
-                z: -115.91200141371534
+                x: -32547.11333459029,
+                y: -3351.32020509378,
+                z: 1206.11560141371534
               },
               up: {
                 x: 0,
@@ -14020,7 +14020,7 @@
           }, {
             isCheck: false,
             isOn: true,
-            name: '会议室',
+            name: 'Meeting Room',
             id: 1636188,
             boundingBox: {
               max: {
@@ -14063,7 +14063,7 @@
           }, {
             isCheck: false,
             isOn: true,
-            name: '销售部',
+            name: 'Sales Dept.',
             id: 1625158,
             boundingBox: {
               max: {
@@ -14106,7 +14106,7 @@
           }, {
             isCheck: false,
             isOn: true,
-            name: '采购部',
+            name: 'Purchasing Dept.',
             id: 1634894,
             boundingBox: {
               max: {
@@ -14194,7 +14194,53 @@
 
                 me.updateTag();
               });
+
+              // Test get id
+                app.addEventListener(Glodon.Bimface.Viewer.Viewer3DEvent.ComponentsSelectionChanged,function(componentData){
+              	if(componentData && componentData.objectId){
+                  var selectid = [900293, 912347, 912852, 900294, 900290];
+                  var ii
+                for (ii = 0; ii < selectid.length; ii++){  
+                if(selectid[ii] == componentData.objectId){
+//                  var vida = componentData.objectId;  
+//                  window.alert(vida);
+//                  window.alert(componentData.worldPosition.x);
+//                  window.alert(componentData.worldPosition.y);
+//                  window.alert(componentData.worldPosition.z);
+                  window.alert(componentData.elementId);
+              		}
+		    }	
+		}
+              	});
+ 
+
+	//redColor Components
+	 app.addEventListener(Glodon.Bimface.Viewer.Viewer3DEvent.ViewAdded, function(){
+                window.viewer3D = app.getViewer();
+
+	// 手动render
+	app.render();
+	
+	// *******************
+	// 举例：在下文中编写改变模型构件显示状态的代码，其中"x1"、"x2"表示构件的ObjectId
+	// *******************
+	
+	
+	// 改变构件的颜色
+	var redColor = new Glodon.Web.Graphics.Color(255, 0, 0, 1);
+	viewer3D.overrideComponentsColorById(["900293", 912347, 912852, 900294, 900290], redColor);
+	});
+
+
+     
+              //origin            
+
             };
+
+	// 改变构件的颜色
+//	var redColor = new Glodon.Web.Graphics.Color(255, 0, 0, 1);
+//	viewer3D.overrideComponentsColorById(["900293", 912347], redColor);
+
 
             var failureCallback = function failureCallback(error) {
               console.log(error);
@@ -14284,7 +14330,7 @@
             enabled: false
           },
           series: [{
-            name: '实时耗电量',
+            name: 'RT Power Consumption',
             data: function() {
               // generate an array of random data
               var data = [],
@@ -14581,7 +14627,7 @@
         var _c = _vm._self._c || _h;
         return _c('div', {
           staticClass: "energy"
-        }, [_vm._v("\n        实时耗电量\n        "), _c('div', {
+        }, [_vm._v("\n        RT Power Consumption\n        "), _c('div', {
           staticClass: "energy-charts",
           attrs: {
             "id": "energy",
@@ -14598,7 +14644,7 @@
           staticClass: "btn btn-sm btn-default",
           attrs: {
           }
-        }, [_vm._v("示例")])])
+        }, [_vm._v("Demo")])])
       }]
     }
     if (false) {

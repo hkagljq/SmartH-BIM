@@ -95,8 +95,8 @@
                   ? "-debug"
                   : "",
                 l = [
-                  "./Bimface.css",
-                  "./Bimface.js"
+                  "./api/Bimface/Bimface.css",
+                  "./api/Bimface/Bimface.js"
                 ];
               o(t.viewToken, r),
               n(l, 0, function(e) {
